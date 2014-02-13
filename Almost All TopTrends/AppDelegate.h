@@ -7,9 +7,23 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "STTwitter/STTwitterAPI.h"
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
+@interface AppDelegate : NSObject <NSApplicationDelegate, NSTableViewDataSource> {
+  NSString *_currentAction;
+  BOOL _timedOut;
+  
+}
 
 @property (assign) IBOutlet NSWindow *window;
+@property (weak) IBOutlet NSTableView *table;
+@property (strong) NSArray *topTrends;
+@property (weak) IBOutlet NSTableHeaderView *headers;
+@property (strong) STTwitterAPI *twitter;
+@property (strong) NSTimer *myTimer;
+@property (strong) NSTimer *timeout;
+- (IBAction)refreshTrends:(id)sender;
+@property (weak) IBOutlet NSTextField *error;
+
 
 @end
